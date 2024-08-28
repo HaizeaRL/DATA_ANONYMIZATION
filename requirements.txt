@@ -2,3 +2,4 @@ pandas
 faker
 ipykernel
 jupyter
+numpy
