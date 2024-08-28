@@ -61,6 +61,6 @@ for _ in range(num_students):
 
 # Create dataframe and save file
 df = pd.DataFrame(data)
-df.to_csv('./students_data.csv', index=False, encoding='utf-8')
+df.to_csv('../students_data.csv', index=False, encoding='utf-8')
 
 print("Dataset 'students_data.csv' created and saved.")
