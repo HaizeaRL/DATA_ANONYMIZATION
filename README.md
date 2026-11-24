@@ -15,7 +15,17 @@ Anonymizing data not only safeguards privacy but also ensures the secure handlin
 
 This GitHub project demonstrates a case study originally developed in 2016 but uploaded this year. The case involves collaboration between two organizations: one collects personal and academic data from students, while the other uses this data to analyze whether a new product improves academic performance.
 
-To comply with data protection laws, the collected data—which includes both direct identifiers (such as names, eye colors, etc.) and indirect identifiers (like parents' employment status, salary information, and grades)—will be anonymized. By anonymizing data, organizations ensure that individual identities remain confidential and that sensitive information is handled securely, in line with legal standards for data protection.
+To comply with data protection laws, the collected data—which includes both direct identifiers (such as names) and indirect identifiers (like eye and hair color, parents' employment status, salary information, and grades)—will be anonymized. By anonymizing data, organizations ensure that individual identities remain confidential and that sensitive information is handled securely, in line with legal standards for data protection.
+
+## Approach and results
+
+Each variable is analyzed and treated with the technique that fits the analysis goal:
+
+- **Suppression**: attributes not needed for the analysis (names, eye and hair color) are removed.
+- **Masking**: school zip codes keep only the first digits; column names that reveal the context are renamed.
+- **Generalization**: ages and parents' salaries are grouped into ranges; parents' occupation becomes a yes/no employment flag.
+
+The result is validated against singularization, linkage and inference risks using **k-anonymity (k=2)**: every combination of quasi-identifiers appears at least twice. The final dataset is saved as `anonymized_data.csv`.
 
 ## Project Structure
 
@@ -29,3 +39,9 @@ To set up the project environment, you need to install the required Python packa
 
 ```bash
 pip install -r requirements.txt
+```
+
+## Usage
+
+1. Generate the fake dataset: `python src/fake_dataset_creation.py`
+2. Open and run `src/anonymization.ipynb` to apply and validate the anonymization.
